@@ -1,11 +1,12 @@
 let tmi = require('tmi.js')
-let config = require('./config.json')
 let player = require('play-sound')()
+let sentiment = require('sentiment')
 
+let config = require('./config.json')
 
 let options = {
     options: {
-        debug: true
+        debug: false
     },
     connection: {
         reconnect: true
@@ -17,14 +18,22 @@ let options = {
     channels: config.channels
 }
 
+function playSound(sound) {
+    console.log('Playing', sound)
+    player.play('./sounds/' + sound, { timeout: 1000 }, (err) => {
+        if (err) console.log(`Could not play sound: ${err}`);
+    });
+}
+
 let client = new tmi.client(options)
 client.connect()
 
 client.on('chat', (channel, user, message, self) => {
-    console.log('a@: ' + message)
-    if(message.includes('bad')) {
-        player.play('./sounds/cena.mp3', { timeout: 1000 }, (err) => {
-            if (err) console.log(`Could not play sound: ${err}`);
-        });
+    console.log(message, sentiment(message))
+    if (sentiment(message).score > 3) {
+        playSound('cena.mp3')
+    }
+    else {
+        playSound('oh.mp3')
     }
 })

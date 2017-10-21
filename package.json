@@ -5,6 +5,8 @@
   "main": "server.js",
   "dependencies": {
     "irc": "^0.5.2",
+    "play-sound": "^1.1.1",
+    "sentiment": "^4.1.0",
     "tmi.js": "^1.2.1"
   },
   "devDependencies": {},
