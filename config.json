@@ -3,5 +3,5 @@
     "nickname": "phamousj",
     "server": "irc.chat.twitch.tv",
     "port": 6667,
-    "channel": "twitch"
+    "channels": ["#twitch"]
 }

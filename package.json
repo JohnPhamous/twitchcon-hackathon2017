@@ -4,7 +4,8 @@
   "description": "TwitchCon 2017 Hackathon",
   "main": "server.js",
   "dependencies": {
-    "irc": "^0.5.2"
+    "irc": "^0.5.2",
+    "tmi.js": "^1.2.1"
   },
   "devDependencies": {},
   "scripts": {
