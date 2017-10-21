@@ -1,0 +1,24 @@
+{
+  "name": "twitchcon-hackathon2017",
+  "version": "1.0.0",
+  "description": "TwitchCon 2017 Hackathon",
+  "main": "server.js",
+  "dependencies": {
+    "irc": "^0.5.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JohnPhamous/twitchcon-hackathon2017.git"
+  },
+  "author": "John Pham, Emily Huang, Richel Leung, Sebastian Gomez",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JohnPhamous/twitchcon-hackathon2017/issues"
+  },
+  "homepage": "https://github.com/JohnPhamous/twitchcon-hackathon2017#readme"
+}
