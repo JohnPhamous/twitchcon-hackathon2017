@@ -4,6 +4,8 @@
   "description": "TwitchCon 2017 Hackathon",
   "main": "server.js",
   "dependencies": {
+    "chartjs-plugin-datalabels": "^0.1.0",
+    "express": "^4.16.2",
     "irc": "^0.5.2",
     "play-sound": "^1.1.1",
     "sentiment": "^4.1.0",

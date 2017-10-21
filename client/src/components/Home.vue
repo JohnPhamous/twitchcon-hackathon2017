@@ -4,7 +4,7 @@
       <div class="card-header"></div>
       <div class="card-content">
         <div class="content">
-          <img id="twitch-logo" src="../../static/img/twitch.svg"/>
+          <img id="twitch-logo" src="../../static/img/logo.png"/>
           <div class="field">
             <div class="control has-icons-left has-icons-right">
               <input class="input is-large" type="text" placeholder="Channel Name" v-model="channelName">
@@ -15,7 +15,7 @@
           </div>
           <div class="field is-grouped">
             <div class="control">
-              <router-link to="stats" class="button is-link" :disabled="channelName.length < 3">Sense</router-link>
+              <button @click="senseChannel" class="button is-link" :disabled="channelName.length < 3">Sense</button>
             </div>
           </div>
         </div>
@@ -27,6 +27,15 @@
 <script>
 export default {
   name: 'Home',
+  methods: {
+    senseChannel: function() {
+      console.log(this.channelName)
+      fetch(`http://localhost:3000/new/${this.channelName}`)
+        .then((res) => {
+           this.$router.push({path: '/stats'})
+        })
+    }
+  },
   data () {
     return {
       channelName: ''
