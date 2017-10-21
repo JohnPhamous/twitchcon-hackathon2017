@@ -23,8 +23,8 @@ let options = {
 }
 
 function playSound(sound) {
-    // console.log('Playing', sound)
-    player.play('./sounds/' + sound, { timeout: 2000 }, (err) => {
+    console.log('Playing', sound)
+    player.play('./sounds/' + sound, (err) => {
         if (err) console.log(`Could not play sound: ${err}`);
     });
 }
@@ -40,6 +40,8 @@ let previousMessage = '0'
 let currentMessageTokens = []
 let client
 let isStreaming = false
+let messageCnt = 0
+let randomMax = Math.floor(Math.random() * 15) + 1
 
 function connect() {
     if (isStreaming) {
@@ -61,7 +63,6 @@ function connect() {
 
         if (currentScore === 0) {
             currentScore = Math.random() * (5 + 5) - 5;
-            console.log(currentScore)
         }
         if (currentScore > 0) {
             absSum += currentScore
@@ -71,12 +72,19 @@ function connect() {
             absSum += currentScore * -1
             negSum += currentScore * -1
         }
-        if (currentScore > 3) {
-            // playSound('cena.mp3')
+
+        if (currentScore > 3 && messageCnt % randomMax === 0) {
+            playSound('cena.mp3')
+            messageCnt = 0
+            let randomMax = Math.floor(Math.random() * 15) + 1
         }
-        else {
-            // playSound('oh.mp3')
+        else if (currentScore < -3 && messageCnt % randomMax === 0) {
+            playSound('oh.mp3')
+            messageCnt = 0
+            let randomMax = Math.floor(Math.random() * 15) + 1
         }
+
+        messageCnt++
     })
 
     isStreaming = true
