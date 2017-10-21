@@ -3,8 +3,8 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-
 import bulma from 'bulma'
+import Chart from 'chart.js';
 
 Vue.config.productionTip = false
 

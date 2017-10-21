@@ -15,7 +15,7 @@
           </div>
           <div class="field is-grouped">
             <div class="control">
-              <button class="button is-link has-text-centered" :disabled="channelName.length < 3">Sense</button>
+              <router-link to="stats" class="button is-link" :disabled="channelName.length < 3">Sense</router-link>
             </div>
           </div>
         </div>
