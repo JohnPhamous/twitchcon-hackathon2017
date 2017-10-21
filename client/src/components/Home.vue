@@ -7,7 +7,7 @@
           <img id="twitch-logo" src="../../static/img/twitch.svg"/>
           <div class="field">
             <div class="control has-icons-left has-icons-right">
-              <input class="input is-large" type="text" placeholder="Channel Name">
+              <input class="input is-large" type="text" placeholder="Channel Name" v-model="channelName">
               <span class="icon is-small is-left">
                 <i class="fa fa-user"></i>
               </span>
@@ -15,22 +15,21 @@
           </div>
           <div class="field is-grouped">
             <div class="control">
-              <button class="button is-link has-text-centered">Sense</button>
+              <button class="button is-link has-text-centered" :disabled="channelName.length < 3">Sense</button>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'Home',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      channelName: ''
     }
   }
 }
