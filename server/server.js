@@ -36,6 +36,8 @@ let negSum = 0
 let emojiSum = 0
 let messageCount = 0
 let currentMessage = ''
+let previousMessage = '0'
+let currentMessageTokens = []
 let client
 let isStreaming = false
 
@@ -53,6 +55,8 @@ function connect() {
         let currentScore = sentiment(message).score
         pointsExport.push(currentScore)
         currentMessage = message
+        currentMessageTokens = sentiment(message).tokens
+        console.log(currentMessageTokens)
         // console.log(posSum, negSum, absSum)
 
         if (currentScore === 0) {
@@ -93,12 +97,13 @@ app.get('/', (req, res) => {
 
 app.get('/data', (req, res) => {
     res.send(pointsExport)
+    console.log(pointsExport)
     pointsExport.length = 0
 })
 
+// Used for the stats page
 app.get('/song', (req, res) => {
-    res.send([posSum / absSum, 0, negSum / absSum, messageCount, currentMessage, options.channels[0]])
-    // console.log(sentiments)
+    res.send([posSum / absSum, 0, negSum / absSum, messageCount, currentMessage, options.channels[0], currentMessageTokens])  
 })
 
 app.get('/stop', (req, res) => {
