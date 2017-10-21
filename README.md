@@ -10,3 +10,7 @@
 ## Project
 
 The goal of this project is to use sentiment analysis on a Twitch chat to access the current sentiment of the viewers to the streamer. Based on the current sentiment, an event will fire.
+
+## Dependencies
+
+* `sudo apt install mplayer`
