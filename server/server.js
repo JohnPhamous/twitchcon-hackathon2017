@@ -72,18 +72,32 @@ function connect() {
             absSum += currentScore * -1
             negSum += currentScore * -1
         }
-
-        if (currentScore > 3 && messageCnt % randomMax === 0) {
-            playSound('cena.mp3')
+        // 4 - 5
+        if (messageCnt % randomMax === 0) {
             messageCnt = 0
-            let randomMax = Math.floor(Math.random() * 15) + 1
+            randomMax = Math.floor(Math.random() * 15) + 1
+            if (currentScore > 4 && currentScore <= 5) {
+                playSound('cena.mp3')
+            }
+            // 3 - 4
+            else if (currentScore > 3 && currentScore <= 4) {
+                playSound('nigra.mp3')
+            }
+            // 2 - 3
+            else if (currentScore > 2 && currentScore <= 3) {
+                playSound('deez.mp3')
+            }
+            // 1 - 2
+            else if (currentScore > 0 && currentScore <= 2) {
+                playSound('jeff.mp3')
+            }
+            else if (currentScore > -2 && currentScore < 0) {
+                playSound('youlike.mp3')
+            }
+            else {
+                playSound('violin.mp3')
+            }
         }
-        else if (currentScore < -3 && messageCnt % randomMax === 0) {
-            playSound('oh.mp3')
-            messageCnt = 0
-            let randomMax = Math.floor(Math.random() * 15) + 1
-        }
-
         messageCnt++
     })
 
